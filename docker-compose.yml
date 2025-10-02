@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:15
+    container_name: product_ideas_db
+    restart: always
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
+
+volumes:
+  pgdata:
